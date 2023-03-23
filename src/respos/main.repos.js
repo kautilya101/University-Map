@@ -8,8 +8,9 @@ function filePath(fileUrl){
 }
 async function getAllData(){
     try {
-        let users = await CSVToJSON().fromFile(filePath('../db/uniData.csv') );
-        return users.slice(0,80000);
+        // let users = await CSVToJSON().fromFile(filePath('../db/uniData.csv') );
+        let users = await db.getinstnms();
+        return users;
       } catch (err) {
         console.log(err);
       }
@@ -47,10 +48,25 @@ async function getunis(control,course){
     }
 
 }
+async function getinstData(instnm){
+    try{
+        let unis =  await db.getinstData(instnm);
+        return unis;
+    }
+    catch(err){
+        console.log(err);
+    }
+
+}
 
 module.exports = {
     getAllData,
     getCourseData,
     getType,
-    getunis
+    getunis,
+    getinstData
 }
+
+
+
+

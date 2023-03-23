@@ -20,17 +20,17 @@ const getAllUniversities = async(req,res) => {
     }
 }
 
-const getAllUniversitiesData = async(req,res) => {
+const getinstData = async(req,res) => {
     try{
-        const data = await mainService.getAllUniversitiesData();
-        let newobj = {};
-        
+        const instnm = req.query.instnm;
+        const data = await mainService.getinstData(instnm);
         res.send(data);
     }
     catch(err){
         console.log(`Error controller in universities - ${err}`)
     }
 }
+
 
 
 const getCourseData = async (req,res) =>{
@@ -57,7 +57,6 @@ const getTypeData = async (req,res) =>{
 const getunis = async(req,res) => {
     try{
         const {control,course} = req.query;
-        console.log(control,course);
         const data = await mainService.getunis(control,course);
         res.send(data);
     }
@@ -69,8 +68,8 @@ const getunis = async(req,res) => {
 module.exports = {
     getAllData,
     getAllUniversities,
-    getAllUniversitiesData,
     getCourseData,
     getTypeData,
-    getunis
+    getunis,
+    getinstData
 }

@@ -12,30 +12,70 @@ const pool = new Pool({
 const getCourse = 'SELECT DISTINCT CREDDESC FROM university';
 const getType = 'SELECT DISTINCT CONTROL FROM university';
 
-function getAllcourses() {
-  return pool.query(getCourse)
-                    .then((res) => res.rows)
-                    .catch(err => console.log(err))
+
+async function getinstnms(){
+  try {
+    const res = await pool.query('SELECT DISTINCT INSTNM FROM UNIVERSITY ORDER BY INSTNM');
+    return res.rows;
+  } catch (err) {
+    return console.log(err);
+  }
 }
 
-function getAllType() {
-  return pool.query(getType)
-                    .then((res) => res.rows)
-                    .catch(err => console.log(err))
+async function getAllcourses() {
+  try {
+    const res = await pool.query(getCourse);
+    return res.rows;
+  } catch (err) {
+    return console.log(err);
+  }
+}
+
+async function getAllType() {
+  try {
+    const res = await pool.query(getType);
+    return res.rows;
+  } catch (err) {
+    return console.log(err);
+  }
 }
 
 
-function getunis(control,course){
-  
-  if(control == 'None'){
-    return pool.query('SELECT DISTINCT INSTNM FROM university WHERE CREDDESC = $1',[course])
-          .then(res => res.rows)
-          .catch(err => console.log(err));
+async function getunis(control,course){
+
+  if(control != 'None' && course != 'None'){
+    try {
+      const res2 = await pool.query('SELECT DISTINCT INSTNM FROM university WHERE CREDDESC = $1 AND CONTROL = $2', [course,control]);
+      return res2.rows;
+    } catch (err) {
+      return console.log(err);
+    }
+  }
+  else if(control == 'None'){
+    try {
+      const res = await pool.query('SELECT DISTINCT INSTNM FROM university WHERE CREDDESC = $1', [course]);
+      return res.rows;
+    } catch (err) {
+      return console.log(err);
+    }
   }
   else{
-    return pool.query('SELECT DISTINCT INSTNM FROM university WHERE CONTROL = $1',[control])
-    .then(res => res.rows)
-    .catch(err => console.log(err));
+    try {
+      const res_1 = await pool.query('SELECT DISTINCT INSTNM FROM university WHERE CONTROL = $1', [control]);
+      return res_1.rows;
+    } catch (err_1) {
+      return console.log(err_1);
+    }
+  }
+}
+
+
+async function getinstData(instnm){
+  try {
+    const res = await pool.query('SELECT DISTINCT CREDDESC FROM university WHERE INSTNM = $1', [instnm]);
+    return res.rows;
+  } catch (err) {
+    return console.log(err);
   }
 }
 
@@ -43,5 +83,7 @@ function getunis(control,course){
 module.exports = {
   getAllcourses,
   getAllType,
-  getunis
+  getunis,
+  getinstData,
+  getinstnms
 }

@@ -12,13 +12,14 @@
 <body>
     <div class="main">
             <form>
-                <!-- <select name="inst" id="inst">
-                </select> -->
+                <input name="inst" id="inst" class="search" onchange="search()" placeholder="Search University">
+                </input>
                 <select name="control" id="control" >
                 </select>
                 <select name="courses" id="courses" >
                 </select>
                 <input type="submit" id="submitBtn">
+                <input type="button" id="fAll" value="Show All" onclick="fetchdata()">
             </form>
             <div id='map'></div>
         <aside id="sidebar">
