@@ -15,14 +15,14 @@ body.onclick=()=>{
 let unis = [];
 
 const fetchdata = async () => {
-    url = 'http://localhost:4800/v1/data/unis'
+    url = 'https://universityMap.kautilya101.repl.co/v1/data/unis'
     let data = await fetch(url);
     let response = await data.json()
     loadData(response);
 }
 
 const fetchunis = async (course,control) => {
-    url = `http://localhost:4800/v1/data/unisfiltered/?control=${control}&course=${course}`;
+    url = `https://universityMap.kautilya101.repl.co/v1/data/unisfiltered/?control=${control}&course=${course}`;
     let data = await fetch(url);
     let response = await data.json()
     console.log(url);
@@ -39,7 +39,7 @@ submit.addEventListener("click", (e) => {
   
 
 async function fetchCourse(){  // fetch all courses
-    let url = 'http://localhost:4800/v1/data/unisdata';
+    let url = 'https://universityMap.kautilya101.repl.co/v1/data/unisdata';
     let data = await fetch(url);
     let response = await data.json();
     var select = document.querySelector('#courses');
@@ -89,7 +89,7 @@ function search(){
 
 
 async function fetchinst(){ // fetch unis
-    let url = 'http://localhost:4800/v1/data/unis';
+    let url = 'https://universityMap.kautilya101.repl.co/v1/data/unis';
     let data = await fetch(url);
     let response = await data.json();
     let  select = document.querySelector('#inst');
@@ -104,7 +104,7 @@ async function fetchinst(){ // fetch unis
 
 async function fetchinstData(instnm){    // fetch university wise courses
     // const instnm = e.target.value;
-    url = `http://localhost:4800/v1/data/instnmData/?instnm=${instnm}`;
+    url = `https://universityMap.kautilya101.repl.co/v1/data/instnmData/?instnm=${instnm}`;
     let data = await fetch(url);
     let response = await data.json()
     // loadDataIn(response);
@@ -124,7 +124,7 @@ async function fetchinstData(instnm){    // fetch university wise courses
 }
 
 async function fetchtype(){
-    let url = 'http://localhost:4800/v1/data/unistype';
+    let url = 'https://universityMap.kautilya101.repl.co/v1/data/unistype';
     let data = await fetch(url);
     let response = await data.json();
     console.log(response);
