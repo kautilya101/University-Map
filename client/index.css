@@ -121,9 +121,9 @@ input{
     height: 300px;
     width: 300px;
     overflow: auto;
-    position: absolute;
-    left: -200px;
-    top:50px;
+    position: fixed;
+    left: -20px;
+    top:65px;
 
 }
   
