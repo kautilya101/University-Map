@@ -109,7 +109,7 @@ input{
 
 .droplist{
     position: absolute;
-    left:0px;
+    left:0;
     z-index: 10;
 }
 
@@ -122,9 +122,9 @@ input{
     height: 300px;
     width: 300px;
     overflow: auto;
-    position: fixed;
-    left: 0px;
-    top:65px;
+    position: absolute;
+    left: 0;
+    top:50;
 
 }
   
