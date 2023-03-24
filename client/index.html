@@ -11,16 +11,18 @@
 </head>
 <body>
     <div class="main">
-            <form>
-                <input name="inst" id="inst" class="search" onchange="search()" placeholder="Search University">
-                </input>
+            <div class="form">
+                <input name="inst" id="inst"  class="search" placeholder="Search University" autocomplete="off"/>
+                <div class="droplist">
+
+                </div>
                 <select name="control" id="control" >
                 </select>
                 <select name="courses" id="courses" >
                 </select>
                 <input type="submit" id="submitBtn">
                 <input type="button" id="fAll" value="Show All" onclick="fetchdata()">
-            </form>
+            </div>
             <div id='map'></div>
         <aside id="sidebar">
         </aside>
